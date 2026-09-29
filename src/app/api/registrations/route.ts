@@ -1,4 +1,4 @@
-import { EVENT_ID } from "@/lib/event";
+import { insertInscricao } from "@/lib/crm";
 import { createAnonClient } from "@/lib/supabase";
 import { digits, toIsoDate, validCPF, validDate, validEmail, validPhone } from "@/lib/validate";
 import { z } from "zod";
@@ -81,30 +81,34 @@ export async function POST(request: Request) {
   }
 
   const registrationStatus = data.membership === "sim" ? "PENDING" : "PENDING_MEMBERSHIP_VALIDATION";
-  const { error } = await supabase.from("event_registrations").insert({
-    event_id: EVENT_ID,
-    full_name: fullName,
-    cpf,
-    birth_date: toIsoDate(data.birth_date),
-    whatsapp: "55" + phone,
+  const { error } = await insertInscricao(supabase, {
+    nome: fullName,
     email,
-    company: data.company.trim(),
-    city: data.city.trim(),
-    member_number: data.member_number?.trim() || null,
-    is_member: true,
-    membership_status: data.membership,
-    registration_status: registrationStatus,
-    rules_acknowledged: true,
-    rules_acknowledged_at: data.rules_acknowledged_at,
-    privacy_consent: true,
-    marketing_consent: data.marketing_consent,
-    utm_source: text(data.utm_source),
-    utm_medium: text(data.utm_medium),
-    utm_campaign: text(data.utm_campaign),
-    utm_content: text(data.utm_content),
-    utm_term: text(data.utm_term),
-    referrer: text(data.referrer, 500),
-    landing_page: text(data.landing_page, 500),
+    celular: phone,
+    cpf,
+    carteirinha: data.member_number?.trim() || null,
+    empresa: data.company.trim(),
+    status: "inscrito",
+    observacoes:
+      data.membership === "sim"
+        ? "Inscrição recebida. Presença ainda não confirmada."
+        : "Mensalidade a conferir antes de confirmar a presença.",
+    dados_extras: {
+      origem: "landing-inauguracao",
+      associado: true,
+      mensalidade: data.membership,
+      nascimento: toIsoDate(data.birth_date),
+      cidade: data.city.trim(),
+      marketing: data.marketing_consent,
+      regras_em: data.rules_acknowledged_at,
+      utm_source: text(data.utm_source),
+      utm_medium: text(data.utm_medium),
+      utm_campaign: text(data.utm_campaign),
+      utm_content: text(data.utm_content),
+      utm_term: text(data.utm_term),
+      referrer: text(data.referrer, 500),
+      landing_page: text(data.landing_page, 500),
+    },
   });
 
   if (error?.code === "23505") {

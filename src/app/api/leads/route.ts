@@ -1,4 +1,4 @@
-import { EVENT_ID } from "@/lib/event";
+import { insertInscricao } from "@/lib/crm";
 import { createAnonClient } from "@/lib/supabase";
 import { digits, validPhone } from "@/lib/validate";
 import { z } from "zod";
@@ -51,17 +51,23 @@ export async function POST(request: Request) {
     return Response.json({ error: "server" }, { status: 503 });
   }
 
-  const { error } = await supabase.from("membership_leads").insert({
-    event_id: EVENT_ID,
-    full_name: parsed.data.full_name?.trim() || null,
-    whatsapp: "55" + phone,
-    utm_source: text(parsed.data.utm_source),
-    utm_medium: text(parsed.data.utm_medium),
-    utm_campaign: text(parsed.data.utm_campaign),
-    utm_content: text(parsed.data.utm_content),
-    utm_term: text(parsed.data.utm_term),
-    referrer: text(parsed.data.referrer, 500),
-    landing_page: text(parsed.data.landing_page, 500),
+  const { error } = await insertInscricao(supabase, {
+    nome: parsed.data.full_name?.trim() || "Interesse em associação",
+    celular: phone,
+    status: "cancelado",
+    observacoes: "Interesse em se associar. Não é inscrição na inauguração.",
+    dados_extras: {
+      origem: "landing-inauguracao",
+      tipo: "lead_associacao",
+      associado: false,
+      utm_source: text(parsed.data.utm_source),
+      utm_medium: text(parsed.data.utm_medium),
+      utm_campaign: text(parsed.data.utm_campaign),
+      utm_content: text(parsed.data.utm_content),
+      utm_term: text(parsed.data.utm_term),
+      referrer: text(parsed.data.referrer, 500),
+      landing_page: text(parsed.data.landing_page, 500),
+    },
   });
 
   if (error) {

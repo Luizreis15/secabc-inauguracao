@@ -1,4 +1,4 @@
-export const EVENT_ID = "inauguracao-scs-2026";
+export const EVENT_ID = "inauguracao";
 export const EVENT_TARGET = Date.UTC(2026, 9, 2, 22, 0, 0);
 export const MAPS_URL =
   "https://www.google.com/maps/dir/?api=1&destination=Rua+Amazonas%2C+430%2C+Centro%2C+S%C3%A3o+Caetano+do+Sul+-+SP%2C+09520-060";
