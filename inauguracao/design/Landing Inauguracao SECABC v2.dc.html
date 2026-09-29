@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Você é nosso convidado — Inauguração da Nova Sede SECABC | 02.10 · 19h</title>
+<meta name="description" content="O SECABC ganhou casa nova em São Caetano do Sul. Música ao vivo, churrasco e chopp gelado. Exclusivo para associados com mensalidade ativa.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&amp;display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#F4F7FD;color:#0A1B4D;font-family:'Bricolage Grotesque',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+input,button{font-family:inherit}
+a{color:#1F45D8}
+a:hover{color:#0A1B4D}
+:focus-visible{outline:3px solid #FFB320;outline-offset:3px}
+@keyframes wordUp{from{opacity:0;transform:translateY(60%) rotate(4deg)}to{opacity:1;transform:none}}
+@keyframes rise{0%{transform:translateY(0) scale(.6);opacity:0}15%{opacity:.8}100%{transform:translateY(-105vh) scale(1.1);opacity:0}}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes kenburns{from{transform:scale(1.02)}to{transform:scale(1.12) translateX(-1.5%)}}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-6px) rotate(-6deg)}}
+@keyframes pulseRing{0%{box-shadow:0 0 0 0 rgba(255,179,32,.55)}100%{box-shadow:0 0 0 18px rgba(255,179,32,0)}}
+@keyframes dot{0%,100%{opacity:1}50%{opacity:.35}}
+@keyframes tfIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+@media (prefers-reduced-motion: reduce){*{animation:none !important;transition:none !important}}
+</style>
+</helmet>
+
+<section id="topo" data-screen-label="Hero" style="position:relative;overflow:hidden;background:#0A1B4D;color:#fff;min-height:min(100svh,900px);display:flex;flex-direction:column">
+  <img src="assets/sede-fachada.png" alt="" aria-hidden="true" fetchpriority="high" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:72% 45%;display:block;animation:kenburns 24s ease-in-out infinite alternate">
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(10,27,77,.95) 0px,rgba(10,27,77,.86) max(340px,40%),rgba(10,27,77,.25) max(440px,75%),rgba(10,27,77,.1) 100%)"></div>
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,rgba(10,27,77,.85) 0%,rgba(10,27,77,0) 40%)"></div>
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;overflow:hidden">
+    <sc-for list="{{ bubbles }}" as="b" hint-placeholder-count="0">
+      <span style="position:absolute;bottom:-20px;left:{{ b.left }};width:{{ b.size }};height:{{ b.size }};border-radius:50%;border:1.5px solid rgba(255,214,120,.55);background:rgba(255,214,120,.08);animation:rise {{ b.dur }} linear {{ b.delay }} infinite"></span>
+    </sc-for>
+  </div>
+
+  <div style="position:relative;width:100%;max-width:1240px;margin:0 auto;padding:20px clamp(20px,4vw,48px) 0;display:flex;align-items:center;justify-content:space-between;gap:16px">
+    <span style="display:flex;align-items:center;justify-content:center;width:64px;height:64px;border-radius:18px;background:#fff;padding:6px;box-shadow:0 10px 24px -12px rgba(0,0,0,.5);transform:rotate(-3deg)"><img src="assets/logo-sindicato.png" alt="Logo do Sindicato" style="width:100%;height:100%;object-fit:contain;display:block"></span>
+    <span style="display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;border:1px solid rgba(255,255,255,.22);font-size:14px;font-weight:600;white-space:nowrap">Sex · 02.10 · 19h</span>
+  </div>
+
+  <div style="position:relative;flex:1;width:100%;max-width:1240px;margin:0 auto;padding:clamp(36px,6vw,72px) clamp(20px,4vw,48px) clamp(88px,10vw,128px);display:flex;align-items:center">
+    <div style="width:100%;max-width:620px;min-width:0;display:flex;flex-direction:column;gap:26px">
+      <span style="align-self:flex-start;display:inline-flex;align-items:center;gap:10px;padding:8px 16px 8px 12px;border-radius:999px;background:rgba(255,255,255,.08);font-size:14.5px;font-weight:600;color:#FFE3A6;animation:tfIn .6s both">
+        <span style="width:8px;height:8px;border-radius:50%;background:#FFB320;animation:dot 1.6s ease-in-out infinite"></span>Convite para associados SECABC
+      </span>
+      <h1 style="margin:0;font-size:clamp(52px,8.4vw,104px);font-weight:800;line-height:.92;letter-spacing:-.045em">
+        <span style="display:block;overflow:hidden;padding-bottom:.04em"><span style="display:inline-block;animation:wordUp .8s cubic-bezier(.2,.8,.2,1) .1s both">Você é</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.04em"><span style="display:inline-block;animation:wordUp .8s cubic-bezier(.2,.8,.2,1) .22s both">nosso</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.08em"><span style="display:inline-block;color:#FFB320;animation:wordUp .8s cubic-bezier(.2,.8,.2,1) .34s both">convidado.</span></span>
+      </h1>
+      <p style="margin:0;max-width:520px;font-size:clamp(19px,1.7vw,23px);line-height:1.45;color:#D8E1FF;text-wrap:pretty;animation:tfIn .7s .5s both">O SECABC ganhou <strong style="color:#fff">casa nova em São Caetano do Sul</strong> e a gente quer comemorar com você.</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px;animation:tfIn .7s .62s both">
+        <button type="button" onClick="{{ openForm }}" style="display:inline-flex;align-items:center;gap:14px;min-height:62px;padding:0 12px 0 30px;border-radius:999px;border:0;background:#FFB320;color:#0A1B4D;font-size:19px;font-weight:700;cursor:pointer;transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s" style-hover="transform:translateY(-3px) rotate(-1deg);box-shadow:0 18px 36px -14px rgba(255,179,32,.8)" style-active="transform:scale(.97)">Quero participar
+          <span style="width:42px;height:42px;border-radius:50%;background:#0A1B4D;color:#FFB320;display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+        </button>
+        <span style="display:flex;flex-direction:column;font-size:15px;line-height:1.35;color:#D8E1FF"><strong style="color:#fff;font-weight:700">Rua Amazonas, 430</strong>Centro · São Caetano do Sul</span>
+      </div>
+      <span style="font-size:14px;color:#AFC0F2;animation:tfIn .7s .74s both">Exclusivo para associados com mensalidade ativa.</span>
+    </div>
+
+  </div>
+</section>
+
+<div aria-hidden="true" style="position:relative;overflow:hidden;background:linear-gradient(#0A1B4D 50%,#F4F7FD 50%);padding:10px 0">
+  <div style="transform:rotate(-2deg);margin:0 -40px;background:#FFB320;color:#0A1B4D;padding:16px 0;overflow:hidden;box-shadow:0 18px 30px -20px rgba(10,27,77,.5)">
+    <div style="display:flex;width:max-content;gap:40px;font-size:clamp(20px,2.6vw,30px);font-weight:700;letter-spacing:-.01em;white-space:nowrap;animation:marquee 22s linear infinite">
+      <span>MÚSICA AO VIVO</span><span>✦</span><span>CHURRASCO</span><span>✦</span><span>CHOPP GELADO</span><span>✦</span><span>CASA NOVA</span><span>✦</span><span>02.10 · 19H</span><span>✦</span>
+      <span>MÚSICA AO VIVO</span><span>✦</span><span>CHURRASCO</span><span>✦</span><span>CHOPP GELADO</span><span>✦</span><span>CASA NOVA</span><span>✦</span><span>02.10 · 19H</span><span>✦</span>
+    </div>
+  </div>
+</div>
+
+<section data-screen-label="A festa" style="background:#F4F7FD">
+  <div style="max-width:1240px;margin:0 auto;padding:clamp(64px,9vw,112px) clamp(20px,4vw,48px);display:flex;flex-direction:column;gap:clamp(32px,4vw,52px)">
+    <div data-reveal="" style="display:flex;flex-direction:column;gap:14px;max-width:760px">
+      <span style="font-size:15px;font-weight:700;color:#1F45D8">O que te espera</span>
+      <h2 style="margin:0;font-size:clamp(36px,5vw,60px);font-weight:800;line-height:1;letter-spacing:-.04em;text-wrap:balance">Uma noite pra celebrar <span style="color:#1F45D8">do nosso jeito.</span></h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:18px">
+      <div data-reveal="" style="min-height:clamp(260px,26vw,340px);border-radius:32px;padding:30px;background:#1F45D8;color:#fff;display:flex;flex-direction:column;justify-content:space-between;gap:28px;transition:transform .35s cubic-bezier(.2,.8,.2,1)" style-hover="transform:translateY(-8px) rotate(-1.5deg)">
+        <span style="width:68px;height:68px;border-radius:50%;background:rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;animation:bob 3.2s ease-in-out infinite"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg></span>
+        <div style="display:flex;flex-direction:column;gap:8px"><h3 style="margin:0;font-size:clamp(32px,3.2vw,42px);font-weight:800;letter-spacing:-.035em;line-height:1">Música ao vivo</h3><p style="margin:0;font-size:17px;line-height:1.45;color:#DCE4FF">Som bom pra embalar a noite inteira.</p></div>
+      </div>
+      <div data-reveal="" style="min-height:clamp(260px,26vw,340px);border-radius:32px;padding:30px;background:#0A1B4D;color:#fff;display:flex;flex-direction:column;justify-content:space-between;gap:28px;transition:transform .35s cubic-bezier(.2,.8,.2,1)" style-hover="transform:translateY(-8px) rotate(1.5deg)">
+        <span style="width:68px;height:68px;border-radius:50%;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;animation:bob 3.2s ease-in-out .4s infinite"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FFB320" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path></svg></span>
+        <div style="display:flex;flex-direction:column;gap:8px"><h3 style="margin:0;font-size:clamp(32px,3.2vw,42px);font-weight:800;letter-spacing:-.035em;line-height:1">Churrasco</h3><p style="margin:0;font-size:17px;line-height:1.45;color:#C9D6FF">Aquele cheirinho de brasa que todo mundo ama.</p></div>
+      </div>
+      <div data-reveal="" style="min-height:clamp(260px,26vw,340px);border-radius:32px;padding:30px;background:#FFB320;color:#0A1B4D;display:flex;flex-direction:column;justify-content:space-between;gap:28px;transition:transform .35s cubic-bezier(.2,.8,.2,1)" style-hover="transform:translateY(-8px) rotate(-1.5deg)">
+        <span style="width:68px;height:68px;border-radius:50%;background:rgba(10,27,77,.1);display:flex;align-items:center;justify-content:center;animation:bob 3.2s ease-in-out .8s infinite"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0A1B4D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 11h1a3 3 0 0 1 0 6h-1"></path><path d="M9 12v6M13 12v6"></path><path d="M14 7.5c-1 0-1.44.5-3 .5s-2-.5-3-.5-1.72.5-2.5.5a2.5 2.5 0 0 1 0-5c.78 0 1.57.5 2.5.5S9.44 2 11 2s2 1.5 3 1.5 1.72-.5 2.5-.5a2.5 2.5 0 0 1 0 5c-.78 0-1.5-.5-2.5-.5Z"></path><path d="M5 8v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8"></path></svg></span>
+        <div style="display:flex;flex-direction:column;gap:8px"><h3 style="margin:0;font-size:clamp(32px,3.2vw,42px);font-weight:800;letter-spacing:-.035em;line-height:1">Chopp gelado</h3><p style="margin:0;font-size:17px;line-height:1.45;color:#2A2008">Pra brindar essa conquista do jeito certo.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Nova casa" style="background:#fff">
+  <div style="max-width:1240px;margin:0 auto;padding:clamp(64px,9vw,112px) clamp(20px,4vw,48px);display:flex;flex-wrap:wrap;align-items:center;gap:clamp(36px,6vw,80px)">
+    <div data-reveal="" style="flex:1.1 1 420px;min-width:0;position:relative">
+      <div style="position:relative;width:100%;height:clamp(320px,40vw,520px);border-radius:36px;overflow:hidden;background:#EEF2FF">
+        <img src="assets/sede-fachada.png" alt="Entrada da nova sede do SECABC em São Caetano do Sul" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 80%;transform:scale(1.7);transform-origin:62% 80%;display:block">
+      </div>
+      <span style="position:absolute;right:clamp(12px,3vw,28px);bottom:clamp(-18px,-2vw,-14px);display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:999px;background:#0A1B4D;color:#fff;font-size:15px;font-weight:700;box-shadow:0 16px 30px -16px rgba(10,27,77,.6);pointer-events:none;transform:rotate(-3deg)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFB320" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>Rua Amazonas, 430</span>
+    </div>
+    <div data-reveal="" style="flex:1 1 380px;min-width:0;display:flex;flex-direction:column;gap:22px">
+      <span style="font-size:15px;font-weight:700;color:#1F45D8">Sua nova casa</span>
+      <h2 style="margin:0;font-size:clamp(34px,4.4vw,56px);font-weight:800;line-height:1;letter-spacing:-.04em;text-wrap:balance">Sede própria, no coração de São Caetano.</h2>
+      <p style="margin:0;font-size:clamp(17px,1.4vw,19px);line-height:1.55;color:#4B5578;max-width:480px;text-wrap:pretty">Um espaço feito pra ficar mais perto de quem move o comércio, com atendimento, orientação e os benefícios de ser associado.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <span style="padding:9px 16px;border-radius:999px;background:#EEF2FF;color:#1F45D8;font-size:15px;font-weight:600">Saúde</span>
+        <span style="padding:9px 16px;border-radius:999px;background:#EEF2FF;color:#1F45D8;font-size:15px;font-weight:600">Odontologia</span>
+        <span style="padding:9px 16px;border-radius:999px;background:#EEF2FF;color:#1F45D8;font-size:15px;font-weight:600">Jurídico</span>
+        <span style="padding:9px 16px;border-radius:999px;background:#EEF2FF;color:#1F45D8;font-size:15px;font-weight:600">Colônia de férias</span>
+        <span style="padding:9px 16px;border-radius:999px;background:#EEF2FF;color:#1F45D8;font-size:15px;font-weight:600">Convênios</span>
+      </div>
+      <p style="margin:6px 0 0;font-size:clamp(22px,2.2vw,28px);font-weight:700;letter-spacing:-.02em;line-height:1.1;color:#1F45D8">Esta casa também é sua.</p>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Presidente" style="position:relative;overflow:hidden;background:#1F45D8;color:#fff">
+  <div aria-hidden="true" style="position:absolute;left:-180px;top:-220px;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,rgba(10,27,77,.55),rgba(10,27,77,0) 65%);pointer-events:none"></div>
+  <div style="position:relative;max-width:1240px;margin:0 auto;padding:clamp(64px,9vw,112px) clamp(20px,4vw,48px);display:flex;flex-wrap:wrap-reverse;align-items:center;gap:clamp(40px,6vw,80px)">
+    <div data-reveal="" style="flex:1.2 1 440px;min-width:0;display:flex;flex-direction:column;gap:24px">
+      <span style="align-self:flex-start;display:inline-flex;align-items:center;gap:10px;padding:10px 18px;border-radius:14px;background:#FFB320;color:#0A1B4D;font-size:15px;font-weight:800;letter-spacing:.02em;transform:rotate(-2deg)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg>Palavra do presidente
+      </span>
+      <h2 style="margin:0;font-size:clamp(36px,5vw,60px);font-weight:800;line-height:1;letter-spacing:-.045em;text-wrap:balance">Uma conquista de <span style="color:#FFB320">todos nós.</span></h2>
+      <div style="display:flex;flex-direction:column;gap:14px;max-width:540px">
+        <span aria-hidden="true" style="display:flex;align-items:center;gap:14px"><span style="font-size:64px;font-weight:700;line-height:.6;height:30px;color:#FFB320">“</span><span style="flex:1;height:2px;background:rgba(255,179,32,.7)"></span></span>
+        <p style="margin:0;font-size:clamp(22px,2.2vw,28px);font-weight:500;line-height:1.3;color:#fff;text-wrap:pretty">Essa sede é de cada comerciário. Quero te ver lá pra gente comemorar junto, <strong style="color:#FFE3A6;font-weight:700">na sua casa.</strong></p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:2px">
+        <span style="font-size:19px;font-weight:700">Ademar Gonçalves Ferreira</span>
+        <span style="font-size:15.5px;font-weight:600;color:#FFB320">Presidente do SECABC</span>
+      </div>
+    </div>
+    <div data-reveal="" style="flex:1 1 340px;min-width:0;max-width:460px;width:100%;margin:0 auto">
+      <div style="position:relative;width:100%;aspect-ratio:668 / 822">
+        <div aria-hidden="true" style="position:absolute;inset:8% -6% -5% 10%;border-radius:40px;background:#FFB320;transform:rotate(5deg)"></div>
+        <div style="position:absolute;inset:0;border-radius:36px;overflow:hidden;background:#0A1B4D;box-shadow:0 40px 60px -30px rgba(10,27,77,.8);transform:rotate(-2deg)">
+          <img src="assets/presidente-bracos.png" alt="Ademar Gonçalves Ferreira, presidente do SECABC" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:50% 20%;display:block">
+        </div>
+        <span aria-hidden="true" style="position:absolute;left:-14px;bottom:10%;display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:999px;background:#0A1B4D;color:#fff;font-size:15px;font-weight:700;box-shadow:0 16px 30px -14px rgba(0,0,0,.6);transform:rotate(-4deg);animation:bob 4s ease-in-out infinite">Te espero lá! <span style="color:#FFB320">02.10</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Anota aí" style="position:relative;overflow:hidden;background:#0A1B4D;color:#fff">
+  <div aria-hidden="true" style="position:absolute;right:-240px;bottom:-280px;width:720px;height:720px;border-radius:50%;background:radial-gradient(circle,rgba(31,69,216,.4),rgba(31,69,216,0) 62%);pointer-events:none"></div>
+  <div style="position:relative;max-width:1240px;margin:0 auto;padding:clamp(64px,9vw,112px) clamp(20px,4vw,48px);display:flex;flex-direction:column;gap:clamp(28px,4vw,44px)">
+    <h2 data-reveal="" style="margin:0;font-size:clamp(44px,6.4vw,80px);font-weight:800;line-height:.95;letter-spacing:-.045em">Anota <span style="color:#FFB320">aí.</span></h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px">
+      <div data-reveal="" style="border-radius:28px;padding:28px;background:#FFB320;color:#0A1B4D;display:flex;flex-direction:column;justify-content:space-between;gap:24px;min-height:220px;transform:rotate(-1deg)">
+        <span style="font-size:15px;font-weight:700">Quando</span>
+        <div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:clamp(64px,7vw,88px);font-weight:800;line-height:.85;letter-spacing:-.05em">02.10</span><span style="font-size:19px;font-weight:700">Sexta-feira · 19h</span></div>
+      </div>
+      <div data-reveal="" style="border-radius:28px;padding:28px;background:#1F45D8;display:flex;flex-direction:column;justify-content:space-between;gap:24px;min-height:220px;transform:rotate(.8deg)">
+        <span style="font-size:15px;font-weight:700;color:#C9D6FF">Onde</span>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <span style="font-size:clamp(28px,2.8vw,34px);font-weight:800;line-height:1.05;letter-spacing:-.03em">Rua Amazonas, 430</span>
+          <span style="font-size:16px;color:#DCE4FF">Centro · São Caetano do Sul/SP</span>
+          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Rua+Amazonas%2C+430%2C+Centro%2C+S%C3%A3o+Caetano+do+Sul+-+SP%2C+09520-060" target="_blank" rel="noopener" style="margin-top:8px;align-self:flex-start;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;background:#fff;color:#0A1B4D;font-size:15px;font-weight:700;text-decoration:none;transition:transform .2s" style-hover="transform:translateX(3px);color:#0A1B4D">Como chegar<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+        </div>
+      </div>
+      <div data-reveal="" style="border-radius:28px;padding:28px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);display:flex;flex-direction:column;justify-content:space-between;gap:24px;min-height:220px">
+        <span style="font-size:15px;font-weight:700;color:#C9D6FF">{{ cd.label }}</span>
+        <sc-if value="{{ cd.counting }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;gap:clamp(14px,2vw,22px);font-variant-numeric:tabular-nums">
+            <div style="display:flex;flex-direction:column"><span style="font-size:clamp(48px,5vw,64px);font-weight:800;line-height:.9;letter-spacing:-.04em">{{ cd.d }}</span><span style="font-size:14px;color:#C9D6FF;margin-top:6px">dias</span></div>
+            <div style="display:flex;flex-direction:column"><span style="font-size:clamp(48px,5vw,64px);font-weight:800;line-height:.9;letter-spacing:-.04em">{{ cd.h }}</span><span style="font-size:14px;color:#C9D6FF;margin-top:6px">horas</span></div>
+            <div style="display:flex;flex-direction:column"><span style="font-size:clamp(48px,5vw,64px);font-weight:800;line-height:.9;letter-spacing:-.04em;color:#FFB320">{{ cd.m }}</span><span style="font-size:14px;color:#C9D6FF;margin-top:6px">min</span></div>
+          </div>
+        </sc-if>
+        <sc-if value="{{ cd.special }}" hint-placeholder-val="{{ false }}">
+          <span style="font-size:clamp(40px,4.4vw,56px);font-weight:800;line-height:.95;letter-spacing:-.04em;color:#FFB320">{{ cd.text }}</span>
+        </sc-if>
+      </div>
+    </div>
+    <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:12px 32px;padding-top:8px">
+      <span style="display:flex;align-items:center;gap:10px;font-size:16.5px;color:#DCE4FF"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFB320" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>Só para associados com mensalidade ativa</span>
+      <span style="display:flex;align-items:center;gap:10px;font-size:16.5px;color:#DCE4FF"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFB320" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>A gente confere seu cadastro</span>
+      <span style="display:flex;align-items:center;gap:10px;font-size:16.5px;color:#DCE4FF"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFB320" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>A confirmação chega no seu WhatsApp</span>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="CTA final" style="background:#F4F7FD">
+  <div data-reveal="" style="max-width:900px;margin:0 auto;padding:clamp(80px,11vw,140px) clamp(20px,4vw,48px) clamp(120px,13vw,160px);display:flex;flex-direction:column;align-items:center;text-align:center;gap:26px">
+    <h2 style="margin:0;font-size:clamp(42px,6vw,76px);font-weight:800;line-height:.96;letter-spacing:-.045em">Bora comemorar <span style="color:#1F45D8">juntos?</span></h2>
+    <p style="margin:0;font-size:clamp(18px,1.6vw,21px);line-height:1.5;color:#4B5578">Te esperamos dia 02.10, às 19h, na sua nova casa.</p>
+    <button type="button" onClick="{{ openForm }}" style="display:inline-flex;align-items:center;gap:14px;min-height:62px;padding:0 12px 0 30px;border-radius:999px;border:0;background:#0A1B4D;color:#fff;font-size:19px;font-weight:700;cursor:pointer;transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s" style-hover="transform:translateY(-3px) rotate(-1deg);box-shadow:0 18px 36px -14px rgba(10,27,77,.6)" style-active="transform:scale(.97)">Quero participar
+      <span style="width:42px;height:42px;border-radius:50%;background:#FFB320;color:#0A1B4D;display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+    </button>
+  </div>
+</section>
+
+<footer style="background:#07123A;color:#AFC0F2">
+  <div style="max-width:1240px;margin:0 auto;padding:28px clamp(20px,4vw,48px) calc(96px + env(safe-area-inset-bottom));display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;font-size:14px">
+    <span style="display:flex;align-items:center;gap:14px"><span style="flex:none;width:44px;height:44px;border-radius:12px;background:#fff;padding:4px;display:flex"><img src="assets/logo-sindicato.png" alt="" style="width:100%;height:100%;object-fit:contain"></span>© 2026 SECABC · Sindicato dos Comerciários do ABC</span>
+    <nav style="display:flex;gap:20px"><a href="#" style="color:#AFC0F2;text-decoration:none" style-hover="color:#fff">Privacidade</a><a href="#" style="color:#AFC0F2;text-decoration:none" style-hover="color:#fff">LGPD</a></nav>
+  </div>
+</footer>
+
+<div style="position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom));z-index:60;transform:translate(-50%,{{ fab.y }});opacity:{{ fab.o }};pointer-events:{{ fab.pe }};transition:transform .5s cubic-bezier(.2,.8,.2,1),opacity .4s;width:max-content;max-width:calc(100vw - 24px)">
+  <button type="button" onClick="{{ openForm }}" style="display:flex;align-items:center;gap:14px;min-height:60px;padding:8px 8px 8px 22px;border-radius:999px;border:0;background:#0A1B4D;color:#fff;cursor:pointer;box-shadow:0 20px 40px -14px rgba(10,27,77,.7);transition:transform .25s" style-hover="transform:translateY(-2px)" style-active="transform:scale(.97)">
+    <span style="display:flex;flex-direction:column;align-items:flex-start;line-height:1.15;text-align:left"><span style="font-size:12px;font-weight:600;color:#AFC0F2">02.10 · 19h</span><span style="font-size:17px;font-weight:700">Quero participar</span></span>
+    <span style="width:44px;height:44px;border-radius:50%;background:#FFB320;color:#0A1B4D;display:flex;align-items:center;justify-content:center;animation:pulseRing 1.8s ease-out infinite"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+  </button>
+</div>
+
+<sc-if value="{{ formOpen }}" hint-placeholder-val="{{ false }}">
+<div role="dialog" aria-modal="true" aria-label="Inscrição na inauguração" style="position:fixed;inset:0;z-index:100;background:#0A1B4D;color:#fff;display:flex;flex-direction:column;overflow:hidden;animation:tfIn .45s cubic-bezier(.2,.8,.2,1)">
+  <div aria-hidden="true" style="position:absolute;right:-200px;top:-220px;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(255,179,32,.22),rgba(255,179,32,0) 62%);pointer-events:none"></div>
+  <div aria-hidden="true" style="position:absolute;left:-240px;bottom:-260px;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(31,69,216,.5),rgba(31,69,216,0) 62%);pointer-events:none"></div>
+  <div style="position:relative;height:4px;background:rgba(255,255,255,.1)"><div style="height:4px;background:#FFB320;width:{{ tf.progress }}%;transition:width .5s cubic-bezier(.2,.8,.2,1)"></div></div>
+  <div style="position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px clamp(16px,3vw,32px)">
+    <span style="font-size:14.5px;font-weight:600;color:#C9D6FF">Inauguração · 02.10 · 19h</span>
+    <button type="button" onClick="{{ closeForm }}" aria-label="Fechar" style="width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.22);background:transparent;color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="background:rgba(255,255,255,.1)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"></path></svg></button>
+  </div>
+  <form noValidate="{{ true }}" onSubmit="{{ onFormSubmit }}" style="position:relative;flex:1;overflow:auto;display:flex;padding:0 clamp(20px,4vw,48px)">
+    <div id="tf-q" style="width:100%;max-width:720px;margin:auto;padding:24px 0 96px;display:flex;flex-direction:column;gap:22px">
+
+      <sc-if value="{{ tf.isIntro }}" hint-placeholder-val="{{ false }}">
+        <h2 style="margin:0;font-size:clamp(40px,6vw,68px);font-weight:800;line-height:.95;letter-spacing:-.04em">Bora garantir <span style="color:#FFB320">seu lugar?</span></h2>
+        <p style="margin:0;font-size:clamp(18px,1.8vw,21px);line-height:1.5;color:#D8E1FF;max-width:560px">Leva menos de 2 minutos. Antes, um combinado rápido:</p>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <span style="display:flex;gap:12px;align-items:flex-start;font-size:17px;line-height:1.45"><span style="flex:none;width:28px;height:28px;border-radius:50%;background:#FFB320;color:#0A1B4D;font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center">1</span><span>O convite é para <strong>associados com mensalidade ativa</strong>.</span></span>
+          <span style="display:flex;gap:12px;align-items:flex-start;font-size:17px;line-height:1.45"><span style="flex:none;width:28px;height:28px;border-radius:50%;background:#FFB320;color:#0A1B4D;font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center">2</span>A gente confere seu cadastro. Preencher não confirma automaticamente.</span>
+          <span style="display:flex;gap:12px;align-items:flex-start;font-size:17px;line-height:1.45"><span style="flex:none;width:28px;height:28px;border-radius:50%;background:#FFB320;color:#0A1B4D;font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center">3</span>A confirmação chega no seu WhatsApp.</span>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:14px">
+          <button type="submit" style="min-height:58px;padding:0 28px;border-radius:14px;border:0;background:#FFB320;color:#0A1B4D;font-size:18px;font-weight:700;cursor:pointer;transition:transform .2s" style-hover="transform:translateY(-2px)" style-active="transform:scale(.97)">Estou ciente, vamos lá</button>
+          <span style="font-size:14px;color:#AFC0F2">ou pressione <strong>Enter ↵</strong></span>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ tf.isQuestion }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <span style="display:flex;align-items:center;gap:8px;font-size:15px;font-weight:700;color:#FFB320">{{ tf.num }}<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg><span style="color:#8FA3DB;font-weight:500">de {{ tf.total }}</span></span>
+          <h2 style="margin:0;font-size:clamp(30px,4.4vw,48px);font-weight:700;line-height:1.08;letter-spacing:-.03em;text-wrap:balance">{{ tf.label }}</h2>
+          <sc-if value="{{ tf.hasHelp }}" hint-placeholder-val="{{ false }}"><p style="margin:0;font-size:17px;color:#AFC0F2">{{ tf.help }}</p></sc-if>
+        </div>
+
+        <sc-if value="{{ tf.isText }}" hint-placeholder-val="{{ false }}">
+          <input id="tf-input" type="text" inputMode="{{ tf.im }}" autoComplete="{{ tf.ac }}" placeholder="{{ tf.ph }}" value="{{ tf.value }}" onChange="{{ tf.onChange }}" aria-invalid="{{ tf.hasErr }}" style="width:100%;background:transparent;border:0;border-bottom:2px solid rgba(255,255,255,.35);padding:10px 0 12px;font-size:clamp(24px,3.2vw,34px);font-weight:500;color:#fff;outline:none;caret-color:#FFB320;transition:border-color .2s" style-focus="border-bottom-color:#FFB320">
+        </sc-if>
+
+        <sc-if value="{{ tf.isChoice }}" hint-placeholder-val="{{ false }}">
+          <div role="radiogroup" style="display:flex;flex-direction:column;gap:10px;max-width:440px">
+            <sc-for list="{{ tf.opts }}" as="o" hint-placeholder-count="2">
+              <button type="button" role="radio" onClick="{{ o.onClick }}" style="display:flex;align-items:center;gap:14px;min-height:58px;padding:0 18px 0 12px;border-radius:14px;border:1.5px solid {{ o.bd }};background:{{ o.bg }};color:{{ o.fg }};font-size:19px;font-weight:600;text-align:left;cursor:pointer;transition:background .2s,border-color .2s,transform .2s" style-hover="transform:translateX(4px)">
+                <span style="flex:none;width:32px;height:32px;border-radius:8px;background:{{ o.kbg }};color:{{ o.kfg }};font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center">{{ o.key }}</span>{{ o.label }}
+              </button>
+            </sc-for>
+          </div>
+          <sc-if value="{{ tf.note }}" hint-placeholder-val="{{ false }}">
+            <p style="margin:0;max-width:520px;padding:14px 18px;border-radius:14px;background:rgba(255,179,32,.14);color:#FFE3A6;font-size:16px;line-height:1.5">Tudo bem! Você pode seguir. A gente só vai conferir sua situação associativa antes de confirmar.</p>
+          </sc-if>
+        </sc-if>
+
+        <sc-if value="{{ tf.isConsent }}" hint-placeholder-val="{{ false }}">
+          <label style="display:flex;gap:14px;align-items:flex-start;cursor:pointer;font-size:16.5px;line-height:1.5;color:#E4EAFF">
+            <input type="checkbox" checked="{{ tf.privacy }}" onChange="{{ tf.onPrivacy }}" style="width:24px;height:24px;margin:1px 0 0;accent-color:#FFB320;flex:none">
+            <span>Declaro que as informações são verdadeiras e autorizo seu uso para cadastro, validação da condição de associado, organização do evento e contato sobre minha inscrição. <a href="#" style="color:#FFB320;font-weight:700">Política de Privacidade</a></span>
+          </label>
+          <label style="display:flex;gap:14px;align-items:flex-start;cursor:pointer;font-size:16.5px;line-height:1.5;color:#AFC0F2">
+            <input type="checkbox" checked="{{ tf.marketing }}" onChange="{{ tf.onMarketing }}" style="width:24px;height:24px;margin:1px 0 0;accent-color:#FFB320;flex:none">
+            <span>Quero receber novidades e benefícios do SECABC. (opcional)</span>
+          </label>
+          <sc-if value="{{ tf.outcomeError }}" hint-placeholder-val="{{ false }}">
+            <p role="alert" style="margin:0;padding:14px 18px;border-radius:14px;background:rgba(255,91,58,.18);color:#FFD2C8;font-size:16px;line-height:1.5">{{ tf.errorCopy }}</p>
+          </sc-if>
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:14px">
+            <button type="submit" disabled="{{ tf.submitting }}" style="min-height:58px;padding:0 28px;border-radius:14px;border:0;background:#FFB320;color:#0A1B4D;font-size:18px;font-weight:700;cursor:pointer;transition:transform .2s,opacity .2s" style-hover="transform:translateY(-2px)" style-active="transform:scale(.97)">
+              <sc-if value="{{ tf.submitting }}" hint-placeholder-val="{{ false }}">Enviando...</sc-if>
+              <sc-if value="{{ tf.notSubmitting }}" hint-placeholder-val="{{ true }}">Enviar minha inscrição</sc-if>
+            </button>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ tf.hasErr }}" hint-placeholder-val="{{ false }}">
+          <span role="alert" style="align-self:flex-start;display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:10px;background:#FF5B3A;color:#0A1B4D;font-size:15px;font-weight:700;animation:{{ tf.errAnim }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4M12 16h.01"></path></svg>{{ tf.err }}</span>
+        </sc-if>
+
+        <sc-if value="{{ tf.showOk }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;align-items:center;gap:14px">
+            <button type="submit" style="display:inline-flex;align-items:center;gap:8px;min-height:52px;padding:0 24px;border-radius:12px;border:0;background:#FFB320;color:#0A1B4D;font-size:18px;font-weight:700;cursor:pointer;transition:transform .2s" style-hover="transform:translateY(-2px)" style-active="transform:scale(.97)">{{ tf.okLabel }}<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></button>
+            <span style="font-size:14px;color:#AFC0F2">pressione <strong>Enter ↵</strong></span>
+          </div>
+        </sc-if>
+      </sc-if>
+
+      <sc-if value="{{ tf.isSuccess }}" hint-placeholder-val="{{ false }}">
+        <span style="width:72px;height:72px;border-radius:50%;background:#FFB320;color:#0A1B4D;display:flex;align-items:center;justify-content:center"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span>
+        <h2 style="margin:0;font-size:clamp(40px,6vw,68px);font-weight:800;line-height:.95;letter-spacing:-.04em">Inscrição <span style="color:#FFB320">recebida!</span></h2>
+        <p style="margin:0;font-size:clamp(18px,1.8vw,21px);line-height:1.5;color:#D8E1FF;max-width:580px">Valeu, {{ tf.first }}! Agora a gente confere sua condição de associado. <strong style="color:#fff">Sua participação ainda não está confirmada</strong>: a confirmação chega no WhatsApp <strong style="color:#fff;white-space:nowrap">{{ tf.whats }}</strong>.</p>
+        <sc-if value="{{ tf.pendingMembership }}" hint-placeholder-val="{{ false }}">
+          <p style="margin:0;font-size:16.5px;line-height:1.5;color:#FFE3A6;max-width:580px">Como sua mensalidade pode não estar ativa, vamos conferir sua situação associativa antes.</p>
+        </sc-if>
+        <p style="margin:0;padding:14px 18px;border-radius:14px;background:rgba(255,255,255,.08);font-size:16px;line-height:1.5;color:#E4EAFF;max-width:580px">Aguarde nossa mensagem antes de considerar sua participação garantida.</p>
+        <button type="button" onClick="{{ closeForm }}" style="align-self:flex-start;min-height:56px;padding:0 28px;border-radius:14px;border:0;background:#FFB320;color:#0A1B4D;font-size:18px;font-weight:700;cursor:pointer" style-hover="transform:translateY(-2px)">Entendi</button>
+      </sc-if>
+
+      <sc-if value="{{ tf.isAlready }}" hint-placeholder-val="{{ false }}">
+        <h2 style="margin:0;font-size:clamp(36px,5vw,56px);font-weight:800;line-height:1;letter-spacing:-.04em">Já recebemos <span style="color:#FFB320">sua inscrição.</span></h2>
+        <p style="margin:0;font-size:clamp(18px,1.8vw,21px);line-height:1.5;color:#D8E1FF;max-width:560px">Encontramos um cadastro com este CPF. Não precisa enviar de novo: a confirmação vai chegar pelo WhatsApp informado.</p>
+        <button type="button" onClick="{{ closeForm }}" style="align-self:flex-start;min-height:56px;padding:0 28px;border-radius:14px;border:0;background:#FFB320;color:#0A1B4D;font-size:18px;font-weight:700;cursor:pointer">Fechar</button>
+      </sc-if>
+
+      <sc-if value="{{ tf.isNonMember }}" hint-placeholder-val="{{ false }}">
+        <h2 style="margin:0;font-size:clamp(34px,5vw,56px);font-weight:800;line-height:1;letter-spacing:-.04em;text-wrap:balance">Esse convite é <span style="color:#FFB320">só para associados.</span></h2>
+        <p style="margin:0;font-size:clamp(18px,1.8vw,21px);line-height:1.5;color:#D8E1FF;max-width:560px">A inauguração é para associados com mensalidade ativa. Mas você pode fazer parte: deixa seu WhatsApp que a gente te conta as vantagens de se associar.</p>
+        <sc-if value="{{ tf.leadPending }}" hint-placeholder-val="{{ true }}">
+          <input id="tf-input" type="tel" inputMode="tel" autoComplete="tel-national" placeholder="(11) 91234-5678" value="{{ tf.leadWhats }}" onChange="{{ tf.onLeadWhats }}" style="width:100%;max-width:440px;background:transparent;border:0;border-bottom:2px solid rgba(255,255,255,.35);padding:10px 0 12px;font-size:clamp(24px,3.2vw,32px);color:#fff;outline:none;caret-color:#FFB320" style-focus="border-bottom-color:#FFB320">
+          <sc-if value="{{ tf.hasLeadErr }}" hint-placeholder-val="{{ false }}"><span role="alert" style="align-self:flex-start;padding:8px 14px;border-radius:10px;background:#FF5B3A;color:#0A1B4D;font-size:15px;font-weight:700">{{ tf.leadErr }}</span></sc-if>
+          <button type="button" onClick="{{ tf.sendLead }}" style="align-self:flex-start;min-height:56px;padding:0 26px;border-radius:14px;border:0;background:#FFB320;color:#0A1B4D;font-size:17px;font-weight:700;cursor:pointer" style-hover="transform:translateY(-2px)">Quero saber como me associar</button>
+          <span style="font-size:13.5px;color:#AFC0F2;max-width:520px">Ao enviar, você autoriza o SECABC a falar com você sobre associação. Isso não é uma inscrição no evento.</span>
+        </sc-if>
+        <sc-if value="{{ tf.leadSent }}" hint-placeholder-val="{{ false }}">
+          <p style="margin:0;padding:16px 20px;border-radius:14px;background:rgba(255,179,32,.16);color:#FFE3A6;font-size:17px;line-height:1.5;max-width:560px">Anotado! A equipe do SECABC vai te chamar no WhatsApp.</p>
+          <button type="button" onClick="{{ closeForm }}" style="align-self:flex-start;min-height:52px;padding:0 24px;border-radius:14px;border:1.5px solid rgba(255,255,255,.3);background:transparent;color:#fff;font-size:17px;font-weight:700;cursor:pointer">Fechar</button>
+        </sc-if>
+      </sc-if>
+    </div>
+  </form>
+  <sc-if value="{{ tf.showArrows }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;right:clamp(16px,3vw,32px);bottom:calc(20px + env(safe-area-inset-bottom));display:flex;gap:2px;border-radius:12px;overflow:hidden">
+      <button type="button" onClick="{{ prev }}" aria-label="Pergunta anterior" disabled="{{ tf.cantBack }}" style="width:48px;height:44px;border:0;background:#FFB320;color:#0A1B4D;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:{{ tf.backO }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"></path></svg></button>
+      <button type="button" onClick="{{ next }}" aria-label="Próxima pergunta" style="width:48px;height:44px;border:0;background:#FFB320;color:#0A1B4D;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></button>
+    </div>
+  </sc-if>
+</div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;countdownMode&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;auto&quot;,&quot;counting&quot;,&quot;today&quot;,&quot;started&quot;],&quot;default&quot;:&quot;auto&quot;,&quot;tsType&quot;:&quot;'auto'|'counting'|'today'|'started'&quot;,&quot;section&quot;:&quot;Protótipo&quot;},&quot;demoOutcome&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;auto&quot;,&quot;already&quot;,&quot;server&quot;,&quot;network&quot;],&quot;default&quot;:&quot;auto&quot;,&quot;tsType&quot;:&quot;'auto'|'already'|'server'|'network'&quot;,&quot;section&quot;:&quot;Protótipo&quot;}}">
+const CONFIG = { EVENT_ID: 'inauguracao-scs-2026', META_PIXEL_ID: null, GA4_ID: null };
+const TARGET = Date.UTC(2026, 9, 2, 22, 0, 0);
+const D = s => (s || '').replace(/\D/g, '');
+const maskCPF = v => D(v).slice(0, 11).replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+const maskPhone = v => { const d = D(v).slice(0, 11); if (!d) return ''; if (d.length < 3) return '(' + d; if (d.length < 8) return `(${d.slice(0,2)}) ${d.slice(2)}`; return `(${d.slice(0,2)}) ${d.slice(2,7)}-${d.slice(7)}`; };
+const maskDate = v => { const d = D(v).slice(0, 8); if (d.length < 3) return d; if (d.length < 5) return d.slice(0,2) + '/' + d.slice(2); return d.slice(0,2) + '/' + d.slice(2,4) + '/' + d.slice(4); };
+const validCPF = v => { const d = D(v); if (d.length !== 11 || /^(\d)\1+$/.test(d)) return false; const c = n => { let s = 0; for (let i = 0; i < n; i++) s += +d[i] * (n + 1 - i); const r = (s * 10) % 11; return r === 10 ? 0 : r; }; return c(9) === +d[9] && c(10) === +d[10]; };
+const validDate = v => { const m = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(v || ''); if (!m) return false; const dd = +m[1], mm = +m[2], yy = +m[3]; const dt = new Date(yy, mm - 1, dd); if (dt.getFullYear() !== yy || dt.getMonth() !== mm - 1 || dt.getDate() !== dd) return false; const age = (TARGET - dt.getTime()) / (365.25 * 864e5); return age >= 14 && age <= 110; };
+const validPhone = v => { const d = D(v); return d.length === 11 && +d.slice(0, 2) >= 11 && d[2] === '9'; };
+const validEmail = v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test((v || '').trim());
+const pad = n => String(Math.max(0, n)).padStart(2, '0');
+const Q = [
+  { id: 'intro', type: 'intro' },
+  { id: 'full_name', type: 'text', label: () => 'Pra começar: qual é o seu nome completo?', ph: 'Digite seu nome', ac: 'name', im: 'text' },
+  { id: 'is_member', type: 'choice', label: n => (n ? n + ', você' : 'Você') + ' é associado ao SECABC?', opts: [['sim', 'Sim, sou associado'], ['nao', 'Ainda não']] },
+  { id: 'membership', type: 'choice', label: () => 'E sua mensalidade está em dia?', opts: [['sim', 'Sim, está ativa'], ['nao', 'Não está'], ['nao_sei', 'Não sei']] },
+  { id: 'cpf', type: 'text', label: () => 'Qual é o seu CPF?', help: 'Usamos só pra conferir seu cadastro de associado.', ph: '000.000.000-00', im: 'numeric' },
+  { id: 'birth_date', type: 'text', label: () => 'Qual a sua data de nascimento?', ph: 'DD/MM/AAAA', im: 'numeric', ac: 'bday' },
+  { id: 'whatsapp', type: 'text', label: () => 'Qual o seu WhatsApp?', help: 'É por lá que a confirmação vai chegar.', ph: '(11) 91234-5678', im: 'tel', ac: 'tel-national' },
+  { id: 'email', type: 'text', label: () => 'E o seu e-mail?', ph: 'seunome@email.com', im: 'email', ac: 'email' },
+  { id: 'company', type: 'text', label: () => 'Em qual empresa você trabalha?', ph: 'Nome da empresa', ac: 'organization', im: 'text' },
+  { id: 'city', type: 'text', label: () => 'Qual é a sua cidade?', ph: 'Ex.: São Caetano do Sul', ac: 'address-level2', im: 'text' },
+  { id: 'member_number', type: 'text', optional: true, label: () => 'Tem seu número de matrícula de associado?', help: 'Se não souber, é só pular.', ph: 'Opcional', im: 'numeric' },
+  { id: 'consent', type: 'consent', label: () => 'Última coisa, prometo.' },
+];
+const EMPTY = { full_name: '', cpf: '', birth_date: '', whatsapp: '', email: '', company: '', city: '', member_number: '', is_member: '', membership: '', privacy: false, marketing: false };
+const MASKS = { cpf: maskCPF, whatsapp: maskPhone, birth_date: maskDate };
+
+class Component extends DCLogic {
+  state = { now: Date.now(), fab: false, open: false, i: 0, f: { ...EMPTY }, err: '', errKey: 0, submitting: false, end: null, outcome: null, lead: false, leadWhats: '', leadErr: '', ackAt: null };
+  registered = new Set();
+  utm = {};
+  bubbles = Array.from({ length: 14 }, (_, k) => ({ left: (k * 7.3 + (k % 3) * 11) % 100 + '%', size: 6 + ((k * 5) % 16) + 'px', dur: 9 + ((k * 3) % 9) + 's', delay: -((k * 1.7) % 12) + 's' }));
+
+  track(event, data = {}) { (window.dataLayer = window.dataLayer || []).push({ event, event_id: CONFIG.EVENT_ID, ...data }); if (window.fbq && CONFIG.META_PIXEL_ID && data.pixel) window.fbq('track', data.pixel); }
+
+  componentDidMount() {
+    const q = new URLSearchParams(location.search);
+    ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach(k => { this.utm[k] = q.get(k) || null; });
+    this.utm.referrer = document.referrer || null; this.utm.landing_page = location.href;
+    this.track('page_view', { ...this.utm, pixel: 'PageView' });
+    this.tick = setInterval(() => this.setState({ now: Date.now() }), 15000);
+    this.onScroll = () => { const fab = scrollY > Math.min(520, innerHeight * .6); if (fab !== this.state.fab) this.setState({ fab }); };
+    addEventListener('scroll', this.onScroll, { passive: true }); this.onScroll();
+    this.onKey = e => this.handleKey(e); addEventListener('keydown', this.onKey);
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+      this.io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) { const el = en.target; el.animate([{ opacity: 0, transform: 'translateY(40px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: 700, easing: 'cubic-bezier(.2,.8,.2,1)' }); el.style.opacity = ''; this.io.unobserve(el); } }), { threshold: .15 });
+      document.querySelectorAll('[data-reveal]').forEach(el => { if (el.getBoundingClientRect().top > innerHeight) { el.style.opacity = '0'; this.io.observe(el); } });
+    }
+  }
+  componentWillUnmount() { clearInterval(this.tick); clearTimeout(this.t); removeEventListener('scroll', this.onScroll); removeEventListener('keydown', this.onKey); this.io && this.io.disconnect(); document.body.style.overflow = ''; }
+  componentDidUpdate(pp, ps) {
+    document.body.style.overflow = this.state.open ? 'hidden' : '';
+    const s = this.state;
+    if (s.open && (ps.i !== s.i || ps.end !== s.end || !ps.open)) {
+      const el = document.getElementById('tf-q');
+      if (el && el.animate) el.animate([{ opacity: 0, transform: 'translateY(28px)' }, { opacity: 1, transform: 'none' }], { duration: 450, easing: 'cubic-bezier(.2,.8,.2,1)' });
+      setTimeout(() => { const inp = document.getElementById('tf-input'); if (inp) inp.focus({ preventScroll: true }); }, 60);
+    }
+  }
+
+  q() { return Q[this.state.i]; }
+  errorFor(id, f) {
+    const v = f[id];
+    switch (id) {
+      case 'full_name': return !v.trim() ? 'Conta pra gente seu nome.' : v.trim().split(/\s+/).length < 2 ? 'Coloca nome e sobrenome, por favor.' : '';
+      case 'cpf': return !D(v) ? 'Precisamos do seu CPF.' : !validCPF(v) ? 'Hmm, esse CPF não parece certo.' : '';
+      case 'birth_date': return !v ? 'Informe sua data de nascimento.' : !validDate(v) ? 'Data inválida. Use DD/MM/AAAA.' : '';
+      case 'whatsapp': return !D(v) ? 'Precisamos do seu WhatsApp.' : !validPhone(v) ? 'Use DDD + 9 dígitos, ex.: (11) 91234-5678.' : '';
+      case 'email': return !v.trim() ? 'Informe seu e-mail.' : !validEmail(v) ? 'Confere o e-mail? Parece incompleto.' : '';
+      case 'company': return !v.trim() ? 'Informe a empresa.' : '';
+      case 'city': return !v.trim() ? 'Informe sua cidade.' : '';
+      case 'is_member': case 'membership': return !v ? 'Escolha uma opção.' : '';
+      case 'privacy': return !v ? 'Esse aceite é necessário pra gente processar sua inscrição.' : '';
+    }
+    return '';
+  }
+  fail(err) { this.setState(s => ({ err, errKey: s.errKey + 1 })); this.track('registration_error', { step: this.q().id }); }
+  open() { if (this.state.end === 'success') this.reset(); this.setState({ open: true }); this.track('cta_click'); if (!this.started) { this.started = true; this.track('registration_start'); } }
+  close() { this.setState({ open: false, err: '' }); if (this.state.end === 'success') this.reset(); }
+  reset() { this.setState({ i: 0, f: { ...EMPTY }, end: null, outcome: null, err: '', lead: false, leadWhats: '', submitting: false }); }
+  setField(id, v) { this.setState(s => ({ f: { ...s.f, [id]: v }, err: '' })); }
+  next() {
+    const s = this.state, q = this.q();
+    if (s.end) return;
+    if (q.type === 'intro') { const at = new Date().toISOString(); this.track('popup_accept', { rules_acknowledged: true, rules_acknowledged_at: at }); return this.setState({ ackAt: at, i: 1 }); }
+    if (q.type === 'consent') return this.submit();
+    const e = q.optional ? '' : this.errorFor(q.id, s.f);
+    if (e) return this.fail(e);
+    if (q.id === 'is_member' && s.f.is_member === 'nao') { this.track('non_member_detected'); return this.setState({ end: 'nonmember' }); }
+    this.setState({ i: s.i + 1, err: '', outcome: null });
+  }
+  prev() { const s = this.state; if (s.end === 'nonmember') return this.setState({ end: null }); if (s.i > 0) this.setState({ i: s.i - 1, err: '', outcome: null }); }
+  pick(id, v) {
+    this.setField(id, v);
+    clearTimeout(this.t);
+    if (id === 'membership' && v !== 'sim') return;
+    this.t = setTimeout(() => this.next(), 380);
+  }
+  handleKey(e) {
+    const s = this.state; if (!s.open) return;
+    if (e.key === 'Escape') return this.close();
+    if (e.target && e.target.tagName === 'BUTTON') return;
+    if (e.key === 'Enter' && !s.end && !s.submitting) { e.preventDefault(); return this.next(); }
+    const q = this.q();
+    if (!s.end && q.type === 'choice' && e.target.tagName !== 'INPUT') { const k = 'abc'.indexOf(e.key.toLowerCase()); if (k >= 0 && q.opts[k]) this.pick(q.id, q.opts[k][0]); }
+  }
+  submit() {
+    const s = this.state, f = s.f;
+    if (s.submitting) return;
+    const e = this.errorFor('privacy', f); if (e) return this.fail(e);
+    const cpf = D(f.cpf), status = f.membership === 'sim' ? 'PENDING' : 'PENDING_MEMBERSHIP_VALIDATION';
+    // → Supabase event_registrations (insert-only RLS + server-side validation + Turnstile)
+    const payload = { event_id: CONFIG.EVENT_ID, full_name: f.full_name.trim(), cpf, birth_date: f.birth_date, whatsapp: '55' + D(f.whatsapp), email: f.email.trim().toLowerCase(), company: f.company.trim(), city: f.city.trim(), member_number: f.member_number || null, is_member: true, membership_status: f.membership, registration_status: status, rules_acknowledged: true, rules_acknowledged_at: s.ackAt, privacy_consent: true, marketing_consent: f.marketing, ...this.utm };
+    this.setState({ submitting: true, outcome: null, err: '' });
+    this.track('registration_submit');
+    this.t = setTimeout(() => {
+      const mode = this.props.demoOutcome ?? 'auto';
+      let out = mode === 'server' || mode === 'network' ? mode : (mode === 'already' || this.registered.has(cpf)) ? 'already' : 'success';
+      if (out === 'success') { this.registered.add(cpf); this.track('registration_success', { registration_status: status, pixel: 'Lead' }); this.setState({ submitting: false, end: 'success', pending: status !== 'PENDING' }); }
+      else if (out === 'already') this.setState({ submitting: false, end: 'already' });
+      else this.setState({ submitting: false, outcome: out });
+    }, 1300);
+  }
+
+  renderVals() {
+    const s = this.state, f = s.f, q = this.q();
+    const first = (f.full_name.trim().split(/\s+/)[0] || '');
+    const diff = TARGET - s.now;
+    let mode = this.props.countdownMode ?? 'auto';
+    if (mode === 'auto') mode = diff <= 0 ? 'started' : new Date(s.now - 3 * 3600e3).toISOString().slice(0, 10) === '2026-10-02' ? 'today' : 'counting';
+    const cd = { counting: mode === 'counting', special: mode !== 'counting', label: mode === 'counting' ? 'Faltam' : 'Contagem', text: mode === 'today' ? 'É hoje!' : 'Já começou!', d: pad(Math.floor(diff / 864e5)), h: pad(Math.floor(diff / 36e5) % 24), m: pad(Math.floor(diff / 6e4) % 60) };
+    const qi = Q.length - 1;
+    const isQ = !s.end && q.type !== 'intro';
+    const val = q.type === 'text' ? f[q.id] : '';
+    const opts = q.type === 'choice' ? q.opts.map(([v, label], k) => { const sel = f[q.id] === v; return { key: 'ABC'[k], label, onClick: () => this.pick(q.id, v), bg: sel ? '#FFB320' : 'rgba(255,255,255,.06)', bd: sel ? '#FFB320' : 'rgba(255,255,255,.28)', fg: sel ? '#0A1B4D' : '#fff', kbg: sel ? '#0A1B4D' : 'rgba(255,255,255,.12)', kfg: sel ? '#FFB320' : '#fff' }; }) : [];
+    const tf = {
+      progress: s.end === 'success' || s.end === 'already' ? 100 : Math.round((s.i / qi) * 100),
+      isIntro: !s.end && q.type === 'intro', isQuestion: isQ,
+      isText: isQ && q.type === 'text', isChoice: isQ && q.type === 'choice', isConsent: isQ && q.type === 'consent',
+      num: s.i, total: qi - 1, label: q.label ? q.label(first) : '', help: q.help || '', hasHelp: !!q.help,
+      ph: q.ph || '', im: q.im || 'text', ac: q.ac || 'off', value: val,
+      onChange: e => this.setField(q.id, MASKS[q.id] ? MASKS[q.id](e.target.value) : e.target.value),
+      err: s.err, hasErr: !!s.err, errAnim: 'shake .35s ' + (s.errKey % 2 ? 'ease' : 'ease-in-out'),
+      opts, note: q.id === 'membership' && (f.membership === 'nao' || f.membership === 'nao_sei'),
+      showOk: isQ && q.type !== 'consent' && (q.type === 'text' || !!f[q.id]),
+      okLabel: q.optional && !val ? 'Pular' : 'OK',
+      privacy: f.privacy, marketing: f.marketing,
+      onPrivacy: e => this.setField('privacy', e.target.checked), onMarketing: e => this.setField('marketing', e.target.checked),
+      submitting: s.submitting, notSubmitting: !s.submitting,
+      outcomeError: s.outcome === 'server' || s.outcome === 'network',
+      errorCopy: s.outcome === 'network' ? 'Parece que sua conexão caiu. Seus dados não foram enviados. Tenta de novo?' : 'Não conseguimos concluir seu cadastro agora. Seus dados não foram confirmados. Tente novamente em alguns instantes.',
+      isSuccess: s.end === 'success', isAlready: s.end === 'already', isNonMember: s.end === 'nonmember',
+      pendingMembership: !!s.pending, first: first || 'Oba', whats: f.whatsapp,
+      cantBack: !((s.i > 0 && !s.end) || s.end === 'nonmember'), backO: ((s.i > 0 && !s.end) || s.end === 'nonmember') ? 1 : .4, showArrows: !s.end || s.end === 'nonmember',
+      leadPending: !s.lead, leadSent: s.lead, leadWhats: s.leadWhats, leadErr: s.leadErr, hasLeadErr: !!s.leadErr,
+      onLeadWhats: e => this.setState({ leadWhats: maskPhone(e.target.value), leadErr: '' }),
+      sendLead: () => { if (!validPhone(s.leadWhats)) return this.setState({ leadErr: 'Use DDD + 9 dígitos, ex.: (11) 91234-5678.' }); this.track('membership_interest', { ...this.utm }); this.setState({ lead: true }); },
+    };
+    return {
+      bubbles: this.bubbles, cd, tf,
+      fab: { y: s.fab && !s.open ? '0' : '160%', o: s.fab && !s.open ? 1 : 0, pe: s.fab && !s.open ? 'auto' : 'none' },
+      openForm: () => this.open(), closeForm: () => this.close(),
+      next: () => this.next(), prev: () => this.prev(),
+      formOpen: s.open,
+      onFormSubmit: e => { e.preventDefault(); this.next(); },
+    };
+  }
+}
+</script>
+</body>
+</html>
