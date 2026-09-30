@@ -32,7 +32,7 @@ export function Landing() {
   useEffect(() => {
     const captured = readUtm();
     setUtm(captured);
-    track("page_view", { ...captured, pixel: "PageView" });
+    track("page_view", captured);
     const tick = () => setNow(Date.now());
     tick();
     const timer = window.setInterval(tick, 15000);
