@@ -3,15 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import type { Utm } from "@/lib/event";
 import { track } from "@/lib/event";
-import {
-  EMPTY_ANSWERS,
-  errorFor,
-  maskCPF,
-  maskDate,
-  maskPhone,
-  validPhone,
-  type Answers,
-} from "@/lib/validate";
+import { EMPTY_ANSWERS, errorFor, maskCPF, maskDate, maskPhone, type Answers } from "@/lib/validate";
 
 type Question = {
   id: string;
@@ -31,29 +23,19 @@ const QUESTIONS: Question[] = [
   {
     id: "is_member",
     type: "choice",
-    label: (n) => `${n ? n + ", você" : "Você"} é associado ao SECABC?`,
+    label: (n) => `${n ? n + ", você" : "Você"} já é associado ao SECABC?`,
+    help: "Os dois podem participar. É só pra gente te conhecer melhor.",
     opts: [
       ["sim", "Sim, sou associado"],
       ["nao", "Ainda não"],
     ],
   },
-  {
-    id: "membership",
-    type: "choice",
-    label: () => "E sua mensalidade está em dia?",
-    opts: [
-      ["sim", "Sim, está ativa"],
-      ["nao", "Não está"],
-      ["nao_sei", "Não sei"],
-    ],
-  },
-  { id: "cpf", type: "text", label: () => "Qual é o seu CPF?", help: "Usamos só pra conferir seu cadastro de associado.", ph: "000.000.000-00", im: "numeric" },
+  { id: "cpf", type: "text", label: () => "Qual é o seu CPF?", help: "Usamos só pra organizar a lista de presença.", ph: "000.000.000-00", im: "numeric" },
   { id: "birth_date", type: "text", label: () => "Qual a sua data de nascimento?", ph: "DD/MM/AAAA", im: "numeric", ac: "bday" },
   { id: "whatsapp", type: "text", label: () => "Qual o seu WhatsApp?", help: "É por lá que a confirmação vai chegar.", ph: "(11) 91234-5678", im: "tel", ac: "tel-national" },
   { id: "email", type: "text", label: () => "E o seu e-mail?", ph: "seunome@email.com", im: "email", ac: "email" },
-  { id: "company", type: "text", label: () => "Em qual empresa você trabalha?", ph: "Nome da empresa", ac: "organization", im: "text" },
+  { id: "company", type: "text", label: () => "Em qual empresa você trabalha?", help: "O convite é para quem trabalha no comércio.", ph: "Nome da empresa", ac: "organization", im: "text" },
   { id: "city", type: "text", label: () => "Qual é a sua cidade?", ph: "Ex.: São Caetano do Sul", ac: "address-level2", im: "text" },
-  { id: "member_number", type: "text", optional: true, label: () => "Tem seu número de matrícula de associado?", help: "Se não souber, é só pular.", ph: "Opcional", im: "numeric" },
   { id: "consent", type: "consent", label: () => "Última coisa, prometo." },
 ];
 
@@ -67,7 +49,7 @@ const SERVER_COPY =
   "Não conseguimos concluir seu cadastro agora. Seus dados não foram confirmados. Tente novamente em alguns instantes.";
 const NETWORK_COPY = "Parece que sua conexão caiu. Seus dados não foram enviados. Tenta de novo?";
 
-type End = null | "success" | "already" | "nonmember";
+type End = null | "success" | "already";
 
 export function RegistrationForm({ open, onClose, utm }: { open: boolean; onClose: () => void; utm: Utm }) {
   const [step, setStep] = useState(0);
@@ -76,14 +58,9 @@ export function RegistrationForm({ open, onClose, utm }: { open: boolean; onClos
   const [errKey, setErrKey] = useState(0);
   const [submitting, setSubmitting] = useState(false);
   const [end, setEnd] = useState<End>(null);
-  const [pending, setPending] = useState(false);
   const [outcome, setOutcome] = useState<"server" | "network" | null>(null);
   const [outcomeCopy, setOutcomeCopy] = useState(SERVER_COPY);
   const [ackAt, setAckAt] = useState<string | null>(null);
-  const [leadSent, setLeadSent] = useState(false);
-  const [leadWhats, setLeadWhats] = useState("");
-  const [leadErr, setLeadErr] = useState("");
-  const [leadSending, setLeadSending] = useState(false);
   const [honeypot, setHoneypot] = useState("");
   const stateRef = useRef({ step, answers, end, submitting, ackAt, honeypot });
   stateRef.current = { step, answers, end, submitting, ackAt, honeypot };
@@ -99,11 +76,7 @@ export function RegistrationForm({ open, onClose, utm }: { open: boolean; onClos
     setErr("");
     setEnd(null);
     setOutcome(null);
-    setPending(false);
     setSubmitting(false);
-    setLeadSent(false);
-    setLeadWhats("");
-    setLeadErr("");
     setAckAt(null);
     setHoneypot("");
   }
@@ -157,7 +130,6 @@ export function RegistrationForm({ open, onClose, utm }: { open: boolean; onClos
       if (response.ok) {
         const status = data.registration_status || "PENDING";
         track("registration_success", { registration_status: status, pixel: "Lead" });
-        setPending(status !== "PENDING");
         setEnd("success");
       } else if (data.error === "already") {
         track("registration_duplicate");
@@ -190,22 +162,13 @@ export function RegistrationForm({ open, onClose, utm }: { open: boolean; onClos
     if (q.type === "consent") return void submit();
     const message = q.optional ? "" : errorFor(q.id, current.answers);
     if (message) return fail(message);
-    if (q.id === "is_member" && current.answers.is_member === "nao") {
-      track("non_member_detected");
-      setEnd("nonmember");
-      return;
-    }
     setStep(current.step + 1);
     setErr("");
     setOutcome(null);
   }
 
   function prev() {
-    if (end === "nonmember") {
-      setEnd(null);
-      return;
-    }
-    if (step > 0) {
+    if (step > 0 && !end) {
       setStep(step - 1);
       setErr("");
       setOutcome(null);
@@ -213,37 +176,11 @@ export function RegistrationForm({ open, onClose, utm }: { open: boolean; onClos
   }
 
   function pick(id: string, value: string) {
-    setField(id, value);
-    window.setTimeout(() => {
-      if (id === "membership" && value !== "sim") return;
-      next();
-    }, 380);
-  }
-
-  async function sendLead() {
-    if (!validPhone(leadWhats)) {
-      setLeadErr("Use DDD + 9 dígitos, ex.: (11) 91234-5678.");
-      return;
-    }
-    setLeadSending(true);
-    try {
-      const response = await fetch("/api/leads", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ full_name: answers.full_name, whatsapp: leadWhats, company_website: honeypot, ...utm }),
-      });
-      const data = (await response.json().catch(() => ({}))) as { error?: string; message?: string };
-      if (!response.ok) {
-        setLeadErr(data.message || "Não conseguimos anotar agora. Tenta de novo?");
-        return;
-      }
-      track("membership_interest", { ...utm });
-      setLeadSent(true);
-    } catch {
-      setLeadErr("Parece que sua conexão caiu. Tenta de novo?");
-    } finally {
-      setLeadSending(false);
-    }
+    const answers = { ...stateRef.current.answers, [id]: value };
+    stateRef.current = { ...stateRef.current, answers };
+    setAnswers(answers);
+    setErr("");
+    window.setTimeout(() => next(), 380);
   }
 
   useEffect(() => {
@@ -300,7 +237,7 @@ export function RegistrationForm({ open, onClose, utm }: { open: boolean; onClos
   const isQuestion = !end && question.type !== "intro";
   const value = question.type === "text" ? String(answers[question.id as keyof Answers] ?? "") : "";
   const showOk = isQuestion && question.type !== "consent" && (question.type === "text" || Boolean(answers[question.id as keyof Answers]));
-  const canBack = (step > 0 && !end) || end === "nonmember";
+  const canBack = step > 0 && !end;
   const progress = end === "success" || end === "already" ? 100 : Math.round((step / (QUESTIONS.length - 1)) * 100);
 
   return (
@@ -337,15 +274,11 @@ export function RegistrationForm({ open, onClose, utm }: { open: boolean; onClos
                 <p>
                   <i>1</i>
                   <span>
-                    O convite é para <strong>associados com mensalidade ativa</strong>.
+                    O convite é para <strong>quem trabalha no comércio</strong>, associado ou não ao SECABC.
                   </span>
                 </p>
                 <p>
                   <i>2</i>
-                  <span>A gente confere seu cadastro. Preencher não confirma automaticamente.</span>
-                </p>
-                <p>
-                  <i>3</i>
                   <span>A confirmação chega no seu WhatsApp.</span>
                 </p>
               </div>
@@ -404,16 +337,12 @@ export function RegistrationForm({ open, onClose, utm }: { open: boolean; onClos
                 </div>
               )}
 
-              {question.id === "membership" && (answers.membership === "nao" || answers.membership === "nao_sei") && (
-                <p className="note">Tudo bem! Você pode seguir. A gente só vai conferir sua situação associativa antes de confirmar.</p>
-              )}
-
               {question.type === "consent" && (
                 <>
                   <label className="check">
                     <input type="checkbox" checked={answers.privacy} onChange={(event) => setField("privacy", event.target.checked)} />
                     <span>
-                      Declaro que as informações são verdadeiras e autorizo seu uso para cadastro, validação da condição de associado, organização do evento e contato sobre minha inscrição.{" "}
+                      Declaro que as informações são verdadeiras e autorizo seu uso para organizar o evento e falar sobre minha inscrição.{" "}
                       <a href="/privacidade">Política de Privacidade</a>
                     </span>
                   </label>
@@ -465,10 +394,8 @@ export function RegistrationForm({ open, onClose, utm }: { open: boolean; onClos
                 Inscrição <span>recebida!</span>
               </h2>
               <p className="q-lead">
-                Valeu, {first || "Oba"}! Agora a gente confere sua condição de associado. <strong>Sua participação ainda não está confirmada</strong>: a confirmação chega no WhatsApp <strong>{answers.whatsapp}</strong>.
+                Valeu, {first || "Oba"}! Sua inscrição foi recebida. A confirmação chega no WhatsApp <strong>{answers.whatsapp}</strong>.
               </p>
-              {pending && <p className="note">Como sua mensalidade pode não estar ativa, vamos conferir sua situação associativa antes.</p>}
-              <p className="banner soft">Aguarde nossa mensagem antes de considerar sua participação garantida.</p>
               <button type="button" className="ok" onClick={close}>
                 Entendi
               </button>
@@ -487,50 +414,13 @@ export function RegistrationForm({ open, onClose, utm }: { open: boolean; onClos
             </>
           )}
 
-          {end === "nonmember" && (
-            <>
-              <h2 className="q-title">
-                Esse convite é <span>só para associados.</span>
-              </h2>
-              <p className="q-lead">A inauguração é para associados com mensalidade ativa. Mas você pode fazer parte: deixa seu WhatsApp que a gente te conta as vantagens de se associar.</p>
-              {!leadSent ? (
-                <>
-                  <input
-                    id="tf-input"
-                    type="tel"
-                    inputMode="tel"
-                    autoComplete="tel-national"
-                    placeholder="(11) 91234-5678"
-                    value={leadWhats}
-                    onChange={(event) => {
-                      setLeadWhats(maskPhone(event.target.value));
-                      setLeadErr("");
-                    }}
-                  />
-                  {leadErr && <span className="err">{leadErr}</span>}
-                  <button type="button" className="ok" onClick={sendLead} disabled={leadSending}>
-                    {leadSending ? "Enviando..." : "Quero saber como me associar"}
-                  </button>
-                  <span className="hint">Ao enviar, você autoriza o SECABC a falar com você sobre associação. Isso não é uma inscrição no evento.</span>
-                </>
-              ) : (
-                <>
-                  <p className="note">Anotado! A equipe do SECABC vai te chamar no WhatsApp.</p>
-                  <button type="button" className="ghost" onClick={close}>
-                    Fechar
-                  </button>
-                </>
-              )}
-            </>
-          )}
-
           <label className="hp">
             Site
             <input tabIndex={-1} autoComplete="off" value={honeypot} onChange={(event) => setHoneypot(event.target.value)} />
           </label>
         </div>
       </form>
-      {(!end || end === "nonmember") && (
+      {!end && (
         <div className="arrows">
           <button type="button" aria-label="Pergunta anterior" onClick={prev} disabled={!canBack} style={{ opacity: canBack ? 1 : 0.4 }}>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">

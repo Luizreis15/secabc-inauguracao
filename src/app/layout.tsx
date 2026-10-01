@@ -13,7 +13,7 @@ const bricolage = Bricolage_Grotesque({
 
 const title = "Você é nosso convidado — Inauguração da Nova Sede SECABC | 02.10 · 19h";
 const description =
-  "O SECABC ganhou casa nova em São Caetano do Sul. Música ao vivo, churrasco e chopp gelado. Exclusivo para associados com mensalidade ativa.";
+  "O SECABC ganhou casa nova em São Caetano do Sul. Música ao vivo, churrasco e chopp gelado. Para quem trabalha no comércio, associado ou não.";
 
 export const metadata: Metadata = {
   title,

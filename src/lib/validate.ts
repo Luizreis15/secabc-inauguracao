@@ -68,9 +68,7 @@ export type Answers = {
   email: string;
   company: string;
   city: string;
-  member_number: string;
   is_member: string;
-  membership: string;
   privacy: boolean;
   marketing: boolean;
 };
@@ -83,9 +81,7 @@ export const EMPTY_ANSWERS: Answers = {
   email: "",
   company: "",
   city: "",
-  member_number: "",
   is_member: "",
-  membership: "",
   privacy: false,
   marketing: false,
 };
@@ -116,7 +112,6 @@ export function errorFor(id: string, f: Answers) {
     case "city":
       return !String(v).trim() ? "Informe sua cidade." : "";
     case "is_member":
-    case "membership":
       return !v ? "Escolha uma opção." : "";
     case "privacy":
       return !v ? "Esse aceite é necessário pra gente processar sua inscrição." : "";

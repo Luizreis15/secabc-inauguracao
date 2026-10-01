@@ -11,8 +11,7 @@ const bodySchema = z.object({
   email: z.string(),
   company: z.string(),
   city: z.string(),
-  member_number: z.string().optional().nullable(),
-  membership: z.enum(["sim", "nao", "nao_sei"]),
+  is_member: z.enum(["sim", "nao"]),
   rules_acknowledged_at: z.string(),
   marketing_consent: z.boolean(),
   company_website: z.string().optional(),
@@ -80,23 +79,20 @@ export async function POST(request: Request) {
     return Response.json({ error: "server" }, { status: 503 });
   }
 
-  const registrationStatus = data.membership === "sim" ? "PENDING" : "PENDING_MEMBERSHIP_VALIDATION";
+  const associado = data.is_member === "sim";
   const { error } = await insertInscricao(supabase, {
     nome: fullName,
     email,
     celular: phone,
     cpf,
-    carteirinha: data.member_number?.trim() || null,
     empresa: data.company.trim(),
     status: "inscrito",
-    observacoes:
-      data.membership === "sim"
-        ? "Inscrição recebida. Presença ainda não confirmada."
-        : "Mensalidade a conferir antes de confirmar a presença.",
+    observacoes: associado
+      ? "Inscrição recebida. Trabalha no comércio e é associado."
+      : "Inscrição recebida. Trabalha no comércio e ainda não é associado.",
     dados_extras: {
       origem: "landing-inauguracao",
-      associado: true,
-      mensalidade: data.membership,
+      associado,
       nascimento: toIsoDate(data.birth_date),
       cidade: data.city.trim(),
       marketing: data.marketing_consent,
@@ -118,5 +114,5 @@ export async function POST(request: Request) {
     return Response.json({ error: "server" }, { status: 500 });
   }
 
-  return Response.json({ ok: true, registration_status: registrationStatus });
+  return Response.json({ ok: true, registration_status: "PENDING" });
 }

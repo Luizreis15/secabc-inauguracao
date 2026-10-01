@@ -19,6 +19,6 @@ NEXT_PUBLIC_SUPABASE_URL
 NEXT_PUBLIC_SUPABASE_ANON_KEY
 ```
 
-Quem se inscreve fica com status `inscrito`. A confirmação continua no painel. Quem diz que não é associado é gravado como `cancelado`, com a observação de interesse em associação, para não entrar na lista de presença.
+Quem se inscreve fica com status `inscrito`, associado ou não. O convite é para quem trabalha no comércio. A confirmação continua no painel. A resposta sobre associação fica em `dados_extras.associado` e na observação, sem barrar a inscrição.
 
 CPF repetido neste evento devolve “já recebemos sua inscrição”.

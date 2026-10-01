@@ -107,7 +107,7 @@ export function Landing() {
           <div>
             <span className="invite">
               <i />
-              Convite para associados SECABC
+              Convite para quem trabalha no comércio
             </span>
             <h1>
               <span className="line">
@@ -135,7 +135,7 @@ export function Landing() {
                 Centro · São Caetano do Sul
               </span>
             </div>
-            <span className="micro">Exclusivo para associados com mensalidade ativa.</span>
+            <span className="micro">Para quem trabalha no comércio, associado ou não.</span>
           </div>
         </div>
       </section>
@@ -218,7 +218,7 @@ export function Landing() {
           <div className="copy" data-reveal="">
             <span className="eyebrow">Sua nova casa</span>
             <h2 style={{ fontSize: "clamp(34px, 4.4vw, 56px)" }}>Sede própria, no coração de São Caetano.</h2>
-            <p>Um espaço feito pra ficar mais perto de quem move o comércio, com atendimento, orientação e os benefícios de ser associado.</p>
+            <p>Um espaço feito pra ficar mais perto de quem move o comércio, com atendimento, orientação e os benefícios do sindicato.</p>
             <div className="chips">
               {["Saúde", "Odontologia", "Jurídico", "Colônia de férias", "Convênios"].map((item) => (
                 <span key={item}>{item}</span>
@@ -323,10 +323,11 @@ export function Landing() {
           <div className="checks" data-reveal="">
             <span>
               <Check />
-              Só para associados com mensalidade ativa
+              Para quem trabalha no comércio
             </span>
             <span>
-              <Check />A gente confere seu cadastro
+              <Check />
+              Associado ou não ao SECABC
             </span>
             <span>
               <Check />A confirmação chega no seu WhatsApp
